@@ -1,0 +1,16 @@
+<div class="navbar">
+  <div class="logo">MyApp</div>
+  <div class="nav-icons">
+    <i class="fas fa-home" (click)="navigateTo('home')"></i>
+    <i class="fas fa-info-circle" (click)="navigateTo('about')"></i>
+    <i class="fas fa-envelope" (click)="navigateTo('contact')"></i>
+  </div>
+</div>
+
+<main class="main">
+  <div class="widget-container">
+    <app-widget></app-widget>
+  </div>
+</main>
+
+<router-outlet />

@@ -1,0 +1,51 @@
+/* Центрування віджета на сторінці */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    /*background-color: #00c3ff;*/
+  }
+  
+  /* Стилі для прямокутної рамки */
+  .widget-box {
+    padding: 20px;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Стилі для поля вводу */
+  input {
+    padding: 10px;
+    margin: 10px 0;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  /* Стилі для кнопки */
+  button {
+    padding: 10px 20px;
+    margin: 10px 0;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Стилі для відображення відповіді */
+  p {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #333;
+  }
