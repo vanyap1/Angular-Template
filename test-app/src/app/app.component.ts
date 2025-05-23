@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { RecipeTableComponent } from './recipe-table/recipe-table.component';
+import { AuthComponent } from './auth/auth.component';
 import { WidgetComponent } from './widget/widget.component';
-import { HttpClientModule } from '@angular/common/http'; // Додайте цей імпорт
+import { MainPageComponent } from './main-page/main-page.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, WidgetComponent, HttpClientModule], // Додайте HttpClientModule до імпортів
+  imports: [RouterOutlet, RecipeTableComponent, AuthComponent, WidgetComponent, MainPageComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
@@ -14,7 +16,6 @@ export class AppComponent {
   title = 'test-app';
 
   navigateTo(page: string) {
-    // Логіка навігації, наприклад, використання Router для переходу на інші сторінки
     console.log(`Navigating to ${page}`);
   }
 }

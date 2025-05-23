@@ -1,0 +1,43 @@
+<div class="container">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Job</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of tableData; let i = index">
+          <td>{{ row.id }}</td>
+          <td>
+            <span *ngIf="editingRowIndex !== i">{{ row.name }}</span>
+            <input *ngIf="editingRowIndex === i" [(ngModel)]="tempData.name" />
+          </td>
+          <td>
+            <span *ngIf="editingRowIndex !== i">{{ row.age }}</span>
+            <input *ngIf="editingRowIndex === i" [(ngModel)]="tempData.age" type="number" />
+          </td>
+          <td>
+            <span *ngIf="editingRowIndex !== i">{{ row.job }}</span>
+            <select *ngIf="editingRowIndex === i" [(ngModel)]="tempData.job">
+              <option value="Developer">Developer</option>
+              <option value="Designer">Designer</option>
+              <option value="Manager">Manager</option>
+              <option value="Intern">Intern</option>
+              <option value="Tester">Tester</option>
+            </select>
+          </td>
+          <td>
+            <button *ngIf="editingRowIndex !== i" (click)="startEditing(i)">Edit</button>
+            <button *ngIf="editingRowIndex === i" (click)="saveChanges(i)">Save</button>
+            <button (click)="deleteRow(i)">Delete</button> <!-- Додайте кнопку для видалення рядка -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button (click)="addRow()">Add Row</button>
+    <button (click)="sendTableData()">Save Table</button> <!-- Додайте кнопку для збереження таблиці -->
+  </div>

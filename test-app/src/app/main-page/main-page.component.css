@@ -1,0 +1,60 @@
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8); /* Світлий напівпрозорий фон */
+  color: #333; /* Темно-сірий текст */
+  padding: 10px;
+  height: 20px; /* Висота навбара */
+  position: fixed; /* Закріпити навбар зверху */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Забезпечити, щоб навбар був поверх інших елементів */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Додати тінь */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.current-route {
+  margin-left: 20px; /* Відступ для поточного маршруту */
+  font-size: 14px;
+  color: #666; /* Сірий текст */
+}
+
+.nav-icons i {
+  margin: 0 10px;
+  cursor: pointer;
+  color: #333; /* Темно-сірий колір іконок */
+  transition: color 0.3s; /* Додати анімацію для зміни кольору */
+}
+
+.nav-icons i:hover {
+  color: #007bff; /* Блакитний при наведенні */
+}
+
+.main-content {
+  display: flex;
+  flex-grow: 1;
+  margin-top: 35px; /* Відступ для навбара */
+  margin-left: 10px; /* Відступ для сайдбара */
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: rgba(255, 255, 255, 0.8); /* Світлий напівпрозорий фон */
+  color: #333; /* Темно-сірий текст */
+  border-left: 1px solid rgba(0, 0, 0, 0.1); /* Світло-сіра лінія для відділення від сайдбара */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Додати тінь */
+  border-radius: 8px; /* Додати закруглені кути */
+  margin-left: 200px; /* Відступ для сайдбара */
+}
+
+

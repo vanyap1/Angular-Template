@@ -1,0 +1,75 @@
+.sidebar {
+  width: 200px;
+  background-color: rgba(255, 255, 255, 0.8); /* Світлий напівпрозорий фон */
+  color: #333; /* Темно-сірий текст */
+  padding: 10px;
+  height: calc(100vh - 50px); /* Висота сайдбара мінус висота навбара */
+  position: fixed;
+  top: 50px; /* Відступ зверху на висоту навбара */
+  left: 0;
+  overflow-y: auto;
+  transition: width 0.3s; /* Додати анімацію для згортання/розгортання */
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1); /* Додати тінь */
+  border-radius: 8px; /* Додати закруглені кути */
+}
+
+.sidebar.collapsed {
+  width: 50px; /* Ширина сайдбара при згортанні */
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul ul {
+  padding-left: 20px;
+}
+
+.sidebar li {
+  margin: 5px 0;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #007bff; /* Блакитний текст */
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+.group-header {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 5px;
+  background-color: rgba(0, 123, 255, 0.1); /* Світлий блакитний для заголовків груп */
+  border-radius: 4px;
+  transition: background-color 0.3s; /* Додати анімацію для зміни кольору */
+}
+
+.group-header:hover {
+  background-color: rgba(0, 123, 255, 0.2); /* Трохи темніший блакитний при наведенні */
+}
+
+.indicator {
+  font-weight: bold;
+}
+
+.toggle-button {
+  position: absolute;
+  top: 10px;
+  right: -20px;
+  background-color: rgba(0, 123, 255, 0.1); /* Світлий блакитний фон */
+  color: #007bff; /* Блакитний текст */
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+  transition: background-color 0.3s; /* Додати анімацію для зміни кольору */
+}
+
+.toggle-button:hover {
+  background-color: rgba(0, 123, 255, 0.2); /* Трохи темніший блакитний при наведенні */
+}

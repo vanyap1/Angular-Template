@@ -1,0 +1,18 @@
+<div class="sidebar" [class.collapsed]="isCollapsed">
+  <button class="toggle-button" (click)="toggleSidebar()">
+    {{ isCollapsed ? '>' : '<' }}
+  </button>
+  <ul>
+    <li *ngFor="let group of menuItems; let i = index">
+      <div class="group-header" (click)="toggleGroup(i)">
+        <span>{{ group.label }}</span>
+        <span class="indicator">{{ group.expanded ? '-' : '+' }}</span>
+      </div>
+      <ul *ngIf="group.expanded">
+        <li *ngFor="let item of group.items">
+          <a [routerLink]="item.link">{{ item.label }}</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

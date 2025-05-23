@@ -1,0 +1,18 @@
+<div class="main-page-container">
+  <div class="navbar">
+    <div class="logo">MyApp</div>
+    <div class="current-route">{{ currentRoute }}</div> <!-- Додано відображення поточного маршруту -->
+    <div class="nav-icons">
+      <i class="fas fa-home" (click)="navigateTo('main-page/app-recipe-table')"></i>
+      <i class="fas fa-info-circle" (click)="navigateTo('main-page/widget')"></i>
+      <i class="fas fa-envelope" (click)="navigateTo('main-page/contact')"></i>
+      <i class="fas fa-sign-out-alt" (click)="logout()"></i>
+    </div>
+  </div>
+  <div class="main-content">
+    <app-sidebar></app-sidebar>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
