@@ -1,0 +1,7 @@
+/test-app$ ng serve --host 0.0.0.0 --port 80  // Run angular app
+//fast api
+pip install "pydantic<2.0"
+pip install --upgrade fastapi pydantic
+pip install pymysql
+pip install python-multipart
+uvicorn main:app --host 0.0.0.0 --reload

@@ -3,9 +3,9 @@
       <thead>
         <tr>
           <th>ID</th>
-          <th>Name</th>
-          <th>Age</th>
-          <th>Job</th>
+          <th>User name</th>
+          <th>Adm level</th>
+          <th>Group</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -13,28 +13,37 @@
         <tr *ngFor="let row of tableData; let i = index">
           <td>{{ row.id }}</td>
           <td>
-            <span *ngIf="editingRowIndex !== i">{{ row.name }}</span>
-            <input *ngIf="editingRowIndex === i" [(ngModel)]="tempData.name" />
+            <span *ngIf="editingRowIndex !== i">{{ row.login }}</span>
+            <input *ngIf="editingRowIndex === i" [(ngModel)]="tempData.login" />
           </td>
           <td>
-            <span *ngIf="editingRowIndex !== i">{{ row.age }}</span>
-            <input *ngIf="editingRowIndex === i" [(ngModel)]="tempData.age" type="number" />
+            <span *ngIf="editingRowIndex !== i">{{ row.user_level }}</span>
+            <input *ngIf="editingRowIndex === i" [(ngModel)]="tempData.user_level" type="number" />
           </td>
           <td>
-            <span *ngIf="editingRowIndex !== i">{{ row.job }}</span>
-            <select *ngIf="editingRowIndex === i" [(ngModel)]="tempData.job">
-              <option value="Developer">Developer</option>
-              <option value="Designer">Designer</option>
-              <option value="Manager">Manager</option>
-              <option value="Intern">Intern</option>
-              <option value="Tester">Tester</option>
+            <span *ngIf="editingRowIndex !== i">{{ row.user_group }}</span>
+            <select *ngIf="editingRowIndex === i" [(ngModel)]="tempData.user_group">
+              <option value="developer">developer</option>
+              <option value="designer">designer</option>
+              <option value="manager">manager</option>
+              <option value="intern">intern</option>
+              <option value="tester">tester</option>
             </select>
           </td>
           <td>
-            <button *ngIf="editingRowIndex !== i" (click)="startEditing(i)">Edit</button>
-            <button *ngIf="editingRowIndex === i" (click)="saveChanges(i)">Save</button>
-            <button (click)="deleteRow(i)">Delete</button> <!-- Додайте кнопку для видалення рядка -->
-          </td>
+            <button *ngIf="editingRowIndex !== i" (click)="startEditing(i)" title="Edit">
+              <i class="fa fa-edit"></i>
+            </button>
+            <button *ngIf="editingRowIndex === i" (click)="saveChanges(i)" title="Save">
+              <i class="fa fa-save"></i>
+            </button>
+            <button *ngIf="editingRowIndex === i" (click)="cancelEdit()" title="Cancel" style="color: #fff; background: #dc3545;">
+              <i class="fa fa-times"></i>
+            </button>
+            <button (click)="deleteRow(i)" title="Delete">
+              <i class="fa fa-trash"></i>
+            </button>
+</td>
         </tr>
       </tbody>
     </table>

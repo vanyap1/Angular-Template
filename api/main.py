@@ -263,7 +263,7 @@ async def get_users(db: Session = Depends(get_db), current_user: User = Depends(
     return [{"id": user.id, "login": user.login, "user_level": user.user_level, "user_group": user.user_group} for user in users]
 
 # Оновити користувача за ID
-@app.put("/users/{user_id}")
+@app.put("/userEdit/{user_id}")
 async def update_user(user_id: int, login: str, password: str, user_level: int, user_group: str, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     check_user_level(current_user, 1)
     user = db.query(User).filter(User.id == user_id).first()
@@ -277,12 +277,13 @@ async def update_user(user_id: int, login: str, password: str, user_level: int, 
     return "ok: user updated"
 
 # Додати нового користувача
-@app.post("/users/")
+@app.post("/userAdd/")
 async def add_user(login: str, password: str, user_level: int, user_group: str, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     check_user_level(current_user, 1)
     
     # Перевірка, чи користувач вже існує
     existing_user = db.query(User).filter(User.login == login).first()
+    print(existing_user)
     if existing_user:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -319,7 +320,7 @@ async def change_password(old_password: str, new_password: str, db: Session = De
     db.commit()
     return {"status": "ok", "message": "Password changed successfully"}
 
-@app.delete("/users/{user_id}")
+@app.delete("/userDel/{user_id}")
 async def delete_user(user_id: int, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     check_user_level(current_user, 1) 
     user = db.query(User).filter(User.id == user_id).first()

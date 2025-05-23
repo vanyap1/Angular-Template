@@ -26,7 +26,7 @@ export class SidebarComponent {
       label: 'Home telemetry',
       items: [
         { label: 'CAM', link: '/cam' },
-        { label: 'Kotel', link: '/cotel' }
+        { label: 'Kotel', link: '/kotel' }
       ],
       expanded: false
     },
@@ -35,7 +35,7 @@ export class SidebarComponent {
       label: 'Wending',
       items: [
         { label: 'Машини', link: '/machines' },
-        { label: 'Рецепти', link: '/machines' },
+        { label: 'Рецепти', link: '/main-page/recipe-table' },
         { label: 'Інградієнти', link: '/receipts' },
         { label: 'Файли обновлень', link: '/receipts' }
       ],
