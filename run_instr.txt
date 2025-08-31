@@ -4,4 +4,23 @@ pip install "pydantic<2.0"
 pip install --upgrade fastapi pydantic
 pip install pymysql
 pip install python-multipart
+pip install sqlalchemy --break-system-packages
 uvicorn main:app --host 0.0.0.0 --reload
+
+--break-system-packages
+
+ng build --configuration production
+
+sudo nano /etc/nginx/sites-available/angular4200
+sudo systemctl stop nginx
+sudo systemctl start nginx
+
+
+
+sudo chmod o+x /home
+sudo chmod o+x /home/vanya
+sudo chmod o+x /home/vanya/automatisation
+sudo chmod o+x /home/vanya/automatisation/webRoot
+sudo chmod o+x /home/vanya/automatisation/webRoot/test-app
+sudo chmod o+x /home/vanya/automatisation/webRoot/test-app/dist
+sudo chmod o+x /home/vanya/automatisation/webRoot/test-app/dist/test-app

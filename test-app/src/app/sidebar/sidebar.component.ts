@@ -16,8 +16,10 @@ export class SidebarComponent {
     {
       label: 'Main',
       items: [
-        { label: 'Receipt', link: '/main-page/app-recipe-table' },
-        { label: 'Widget', link: '/main-page/widget' }
+        
+        { label: 'Бойлер', link: '/main-page/boiler-scheduler' },
+        { label: 'Widget', link: '/main-page/widget' },
+        { label: 'Сенсори', link: '/main-page/sensor-dashboard' }
       ],
       expanded: false
     },
@@ -25,7 +27,7 @@ export class SidebarComponent {
     {
       label: 'Home telemetry',
       items: [
-        { label: 'CAM', link: '/cam' },
+        { label: 'CAM', link: '/main-page/webcam' },
         { label: 'Kotel', link: '/kotel' }
       ],
       expanded: false
@@ -35,7 +37,7 @@ export class SidebarComponent {
       label: 'Wending',
       items: [
         { label: 'Машини', link: '/machines' },
-        { label: 'Рецепти', link: '/main-page/recipe-table' },
+        { label: 'Рецепти', link: '/main-page/userEditor' },
         { label: 'Інградієнти', link: '/receipts' },
         { label: 'Файли обновлень', link: '/receipts' }
       ],
@@ -44,7 +46,7 @@ export class SidebarComponent {
     {
       label: 'Setup',
       items: [
-        { label: 'Users', link: '/users' },
+        { label: 'Користувачі', link: '/main-page/app-userEditor' },
         { label: 'Settings', link: '/settings' }
       ],
       expanded: false

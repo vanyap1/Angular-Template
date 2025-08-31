@@ -1,9 +1,10 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { RecipeTableComponent } from './recipe-table/recipe-table.component';
+import { UserListEditor } from './userEditor/userEditor.component';
 import { AuthComponent } from './auth/auth.component';
 import { WidgetComponent } from './widget/widget.component';
 import { MainPageComponent } from './main-page/main-page.component';
+import { BoilerSchedulerComponent } from './boiler-scheduler/boiler-scheduler.component';
 
 import { NotificationComponent } from './shared/notification/notification.component';
 import { NotificationService } from './services/notification.service';
@@ -11,7 +12,7 @@ import { NotificationService } from './services/notification.service';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RecipeTableComponent, AuthComponent, WidgetComponent, MainPageComponent, NotificationComponent],
+  imports: [RouterOutlet, UserListEditor, AuthComponent, WidgetComponent, MainPageComponent, NotificationComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })

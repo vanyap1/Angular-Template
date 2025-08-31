@@ -1,0 +1,21 @@
+.sensor-dashboard {
+  padding: 20px;
+}
+.sensor-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.sensor-card {
+  width: 320px;
+  min-width: 220px;
+}
+.date-range {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+table.mat-table {
+  margin-top: 16px;
+}

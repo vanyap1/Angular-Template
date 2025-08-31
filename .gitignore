@@ -1,0 +1,31 @@
+# Python cache
+api/__pycache__/
+api/*.pyc
+api/*/__pycache__/
+api/*/*.pyc
+
+# VS Code
+.vscode/
+
+# Node/Angular
+node_modules/
+dist/
+.angular/
+
+# Environment
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# FastAPI/Python virtualenv
+venv/
+__pycache__/
+*.pyc
+
+# Angular build artifacts
+*.tgz

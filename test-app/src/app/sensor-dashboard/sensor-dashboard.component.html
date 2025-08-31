@@ -1,0 +1,90 @@
+<div class="sensor-dashboard" style="max-height: 85vh; overflow-y: auto;">
+  <h2>Сенсори</h2>
+  <div class="sensor-cards">
+    <mat-card *ngFor="let sensor of sensors" class="sensor-card" style="width: 370px; min-width: 320px; max-width: 480px; margin: 16px; display: inline-block; vertical-align: top; box-shadow: 0 4px 24px rgba(0,0,0,0.12); border-radius: 18px; background: linear-gradient(135deg,#f8fafc 80%,#e3f2fd 100%);">
+      <mat-card-header>
+        <div mat-card-avatar style="background: #1976d2; border-radius: 50%; display: flex; align-items: center; justify-content: center; width: 48px; height: 48px;">
+          <mat-icon style="color: #fff; font-size: 32px;">sensors</mat-icon>
+        </div>
+        <mat-card-title style="font-size: 1.25em; font-weight: 600; color: #1976d2;">{{ sensor.name }}</mat-card-title>
+        <mat-card-subtitle style="color: #666;">{{ sensor.description }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 8px;">
+          <span matTooltip="MAC адреса"><mat-icon color="accent">memory</mat-icon> <b>{{ sensor.mac }}</b></span>
+          <span matTooltip="Рівень батареї"><mat-icon color="warn">battery_full</mat-icon> {{ sensor.battery_voltage }} V</span>
+          <span matTooltip="Вхідний стан"><mat-icon color="primary">input</mat-icon> Вхід: {{ sensor.input_state }}</span>
+          <span matTooltip="Вихідний стан"><mat-icon color="primary">output</mat-icon> Вихід: {{ sensor.output_state }}</span>
+          <span matTooltip="Останній зв'язок"><mat-icon color="accent">update</mat-icon> {{ sensor.last_seen_at }}</span>
+        </div>
+        <mat-divider style="margin: 12px 0;"></mat-divider>
+        <div *ngIf="lastMeasurements[sensor.mac] as last">
+          <div style="margin-top: 8px;">
+            <span style="font-weight: bold;">Останні вимірювання:</span>
+            <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px;">
+              <span *ngFor="let value of last.body?.channels; let i = index">
+                <mat-icon color="primary">timeline</mat-icon> Канал {{ i + 1 }}: <b>{{ value }}</b>
+              </span>
+            </div>
+            <div style="margin-top: 4px; color: #666; font-size: 0.95em;">
+              <mat-icon color="accent">schedule</mat-icon> Час: {{ last.body?.recorded_at }}
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-actions style="display: flex; justify-content: flex-end;">
+        <button mat-raised-button color="primary" (click)="showHistory(sensor)" matTooltip="Показати статистику">
+          <mat-icon>bar_chart</mat-icon> Статистика
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div *ngIf="selectedSensor">
+    <h3>Статистика: {{ selectedSensor.name }} ({{ selectedSensor.mac }})</h3>
+    <div class="date-range">
+      <mat-form-field appearance="fill">
+        <mat-label>Початок</mat-label>
+        <input matInput [matDatepicker]="startPicker" [(ngModel)]="startDate">
+        <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+        <mat-datepicker #startPicker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Кінець</mat-label>
+        <input matInput [matDatepicker]="endPicker" [(ngModel)]="endDate">
+        <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+        <mat-datepicker #endPicker></mat-datepicker>
+      </mat-form-field>
+      <button mat-raised-button color="accent" (click)="showHistory(selectedSensor)">Оновити</button>
+    </div>
+    <div style="width: 80vw; min-width: 80vw; margin: 0 auto;">
+      <div style="display: flex; gap: 16px; align-items: flex-start;">
+        
+        <div style="flex: 1; margin-left: -40px;">
+          <canvas baseChart
+            [data]="{ labels: chartLabels, datasets: chartData }"
+            [options]="chartOptions"
+            [legend]="true"
+            [type]="'line'">
+          </canvas>
+        </div>
+        
+        <div style="min-width: 180px;">
+          <h4 style="margin-bottom: 0;">Канали для графіку:</h4>
+          <button mat-button color="primary" (click)="channelsCollapsed = !channelsCollapsed" style="margin-bottom: 8px;">
+            <mat-icon>{{ channelsCollapsed ? 'expand_more' : 'expand_less' }}</mat-icon>
+            {{ channelsCollapsed ? 'Показати' : 'Сховати' }}
+          </button>
+          <div *ngIf="!channelsCollapsed" style="display: flex; flex-direction: column; gap: 8px;">
+            <mat-slide-toggle *ngFor="let checked of channelSelection; let i = index" color="primary" [(ngModel)]="channelSelection[i]" (change)="toggleChannel(i)">
+              Канал {{ i + 1 }}
+            </mat-slide-toggle>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>

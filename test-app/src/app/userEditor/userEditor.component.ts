@@ -9,13 +9,13 @@ import { AuthService } from '../services/auth.service';
 import { NotificationService } from '../services/notification.service';
 
 @Component({
-  selector: 'app-recipe-table',
+  selector: 'app-userEditor',
   standalone: true,
-  templateUrl: './recipe-table.component.html',
-  styleUrls: ['./recipe-table.component.css'],
+  templateUrl: './userEditor.component.html',
+  styleUrls: ['./userEditor.component.css'],
   imports: [CommonModule, FormsModule, MatDialogModule, MatButtonModule]
 })
-export class RecipeTableComponent {
+export class UserListEditor {
   @Input() tableData: any[] = [];
   @Output() tableDataChange = new EventEmitter<any[]>();
 
